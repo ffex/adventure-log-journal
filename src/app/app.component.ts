@@ -1,13 +1,21 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { MenubarComponent } from './menubar/menubar.component';
+import { PrimeNGConfig } from 'primeng/api';
+import { Aura } from 'primeng/themes/aura';
+import { HomePageComponent } from './home-page/home-page.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, MenubarComponent,HomePageComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'journal-log';
+  constructor(private config: PrimeNGConfig) {
+    this.config.theme.set({ preset: Aura });
+
+  }
 }
