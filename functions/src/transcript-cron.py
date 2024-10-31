@@ -26,6 +26,8 @@ def main(context):
             Query.equal("isProcessing", True)
         ])
 
+
+
         for document in documents['documents']:
 
             response = requests.get(f"https://api.assemblyai.com/v2/transcript/{document['assemblyAiTranscriptId']}",
