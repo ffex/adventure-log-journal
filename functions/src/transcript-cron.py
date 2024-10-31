@@ -49,7 +49,7 @@ def main(context):
                     db.update_document(DB_ID, COLLECTION_ID, document['$id'], {"rawText": transcript_text,
                                                                                "isProcessing": False,
                                                                                "dateUpload": datetime.now().isoformat(),
-                                                                               "speakerCharacters": speakerCharacters})
+                                                                               "speakerCharacter": speakerCharacters})
                     cnt_transcripts_processed += 1
             else:
                 context.log(f"Error getting transcript {document['assemblyAiTranscriptId']}")
