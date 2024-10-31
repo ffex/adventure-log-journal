@@ -47,6 +47,8 @@ def main(context):
             "name":name,
             "adventure":adventure
         }
+
+        
         document_id = ID.unique()
         document = db.create_document(DB_ID, COLLECTION_ID, document_id,document_fields)
         return context.res.text(f"Document created with id {document_id}")
