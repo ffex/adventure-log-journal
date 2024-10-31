@@ -32,7 +32,7 @@ def main(context):
 
             response = requests.get(f"https://api.assemblyai.com/v2/transcript/{document['assemblyAiTranscriptId']}",
                                     headers={"Authorization": AAI_API_KEY})
-            if response.status_code == 'completed':
+            if response.status == 'completed':
                 context.log(response.json())
                 transcript = response.json();
                 transcript_text = ""
