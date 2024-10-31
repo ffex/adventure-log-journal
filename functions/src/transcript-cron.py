@@ -37,9 +37,11 @@ def main(context):
                 speakerCharacters = []
                 for utterance in transcript['utterances']:
                     transcript_text += f"Speaker {utterance['speaker']}: {utterance['text']}\n"
-
+                    
                     speaker = {"speaker":f"Speaker {utterance['speaker']}","character":""}
-                    speakerCharacters.append(speaker)
+                    if not any(s['speaker'] == speaker['speaker'] for s in speakerCharacters):
+                        speakerCharacters.append(speaker)
+                        
                 if transcript is not None:
                     db.update_document(DB_ID, COLLECTION_ID, document['$id'], {"rawText": transcript_text,
                                                                                "isProcessing": False,
