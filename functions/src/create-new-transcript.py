@@ -39,7 +39,7 @@ def main(context):
         db = Databases(client)
 
         document_fields = {
-            "fileRef": fileId,
+            "fileId": fileId,
             "dateUpload": datetime.now().isoformat(),
             "fileUrl": fileUrl,
             "isProcessing": True,
