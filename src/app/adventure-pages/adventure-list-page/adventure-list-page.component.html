@@ -1,0 +1,27 @@
+<div class="flex justify-content-end mt-3">
+    <p-button icon="pi pi-plus" severity="info" [rounded]="true" [text]="true" (click)="onAdd()"></p-button>
+</div>
+<p-table [value]="adventures" 
+selectionMode="single" 
+[(selection)]="selectedAdventure" 
+[tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Title</th>
+            <th>Start Date</th>
+            <th>Number of PCs</th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-adventure >
+        <tr [pSelectableRow]="adventure">
+            <td>{{ adventure.title }}</td>
+            <td>{{ adventure.startDate }}</td>
+            <td>{{ adventure.numberOfPcs }}</td>
+            <td>
+                <p-button icon="pi pi-pencil" severity="info" [rounded]="true" [text]="true" (click)="onEdit(adventure)"></p-button>
+                <p-button icon="pi pi-trash" severity="danger" [rounded]="true" [text]="true" (click)="onDelete(adventure)"></p-button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

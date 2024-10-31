@@ -1,0 +1,32 @@
+<p-tabs value="0">
+    <p-tablist>
+        <p-tab value="0">Detail</p-tab>
+        <p-tab value="1">Characters</p-tab>
+        <p-tab value="2">Transcriptions</p-tab>
+    </p-tablist>
+    <p-tabpanels>
+        <p-tabpanel value="0">
+            <app-adventure-detail-page [adventureId]="adventureId"></app-adventure-detail-page>
+        </p-tabpanel>
+        <p-tabpanel value="1">
+            <div *ngIf="showCharacterDetail">
+                <app-character-detail-page [adventureId]="adventureId!" [characterId]="currentCharacterId" (saveClicked)="onCharacterSave()"></app-character-detail-page>
+            </div>
+            <div *ngIf="!showCharacterDetail">
+                <app-character-list-page [adventureId]="adventureId!" (createClicked)="onCharacterCreate()" (editClicked)="onCharacterEdit($event)"></app-character-list-page>
+            </div>
+        </p-tabpanel>
+        <p-tabpanel value="2">
+            <div *ngIf="showTranscriptionPanel == 'upload'">
+                <app-transcription-upload-page [adventureId]="adventureId!" (saveClicked)="onTranscriptionSave()"></app-transcription-upload-page>
+            </div>
+            <div *ngIf="showTranscriptionPanel == 'list'">
+                <app-transcription-list-page [adventureId]="adventureId!" (createClicked)="onTranscriptionCreate()" (viewClicked)="onTranscriptionView($event)"></app-transcription-list-page>
+            </div>
+            <div *ngIf="showTranscriptionPanel == 'detail'">
+                <app-transcription-detail-page [adventureId]="adventureId!" [transcriptId]="currentTranscriptId!" (saveClicked)="onTranscriptionSave()"></app-transcription-detail-page>
+            </div>
+
+        </p-tabpanel>
+    </p-tabpanels>
+</p-tabs>

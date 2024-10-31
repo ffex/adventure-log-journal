@@ -1,0 +1,33 @@
+<div class="flex flex-column gap-4">
+  <p-card>
+    <form [formGroup]="transcriptForm">
+      <div class="flex flex-column gap-4">
+        <p-floatlabel variant="on" class="mb-3">
+          <input pInputText id="name" formControlName="name" />
+          <label for="name">Name</label>
+        </p-floatlabel>
+
+        <p-floatlabel variant="on" class="mb-3">
+          <input pInputText id="dateUpload" [value]="currentTranscript?.dateUpload" readonly />
+          <label for="dateUpload">Upload Date</label>
+        </p-floatlabel>
+
+        <p-floatlabel variant="on" class="mb-3">
+          <textarea pInputTextarea id="rawText" [value]="currentTranscript?.rawText" readonly rows="10" style="width: 100%"></textarea>
+          <label for="rawText">Transcript</label>
+        </p-floatlabel>
+
+        <div *ngIf="currentTranscript?.fileUrl">
+          <audio controls>
+            <source [src]="currentTranscript?.fileUrl" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+
+        <div class="flex justify-content-end">
+          <p-button type="submit" label="Save"></p-button>
+        </div>
+      </div>
+    </form>
+  </p-card>
+</div>

@@ -1,0 +1,21 @@
+<div class="flex justify-content-center align-items-center h-full mt-5">
+    <p-card header="Create New Adventure">
+        <form [formGroup]="adventureForm" (ngSubmit)="onSubmit()">
+            <p-floatlabel variant="on" class="mb-3">
+                <input pInputText id="title" formControlName="title" autocomplete="off" />
+                <label for="title">Title</label>
+            </p-floatlabel>
+            <p-floatlabel variant="on" class="mb-3">
+                <input pInputText id="startDate" formControlName="startDate" autocomplete="off" />
+                <label for="startDate">Start Date</label>
+            </p-floatlabel>
+            <p-floatlabel variant="on" class="mb-3">
+                <input pInputText id="numberOfPcs" formControlName="numberOfPcs" autocomplete="off" />
+                <label for="numberOfPcs">Number of PCs</label>
+            </p-floatlabel>
+            <div class="flex justify-content-end">
+                <p-button label="Submit" type="submit" />
+            </div>
+        </form>
+    </p-card>
+</div>

@@ -1,5 +1,18 @@
-<p-fileupload #fu mode="basic" chooseLabel="Choose" chooseIcon="pi pi-upload" name="demo[]"
-    url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" maxFileSize="1000000"
-    (onUpload)="onUpload($event)" />
-<p-button label="Upload" (onClick)="fu.upload()" severity="secondary" />
-<p-button label="Test Message" (onClick)="testMessage()" severity="secondary" />
+<div class="flex justify-content-center align-items-center h-full mt-5">
+    <p-card>
+        <p-fileupload #fu mode="basic" chooseLabel="Choose" chooseIcon="pi pi-upload" name="demo[]"
+            url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" maxFileSize="1000000"
+            (onUpload)="onUpload($event)" class="mb-3"/>
+            <div class="flex justify-content-end">
+                <div class="flex align-items-center justify-content-end mb-3">
+                    <span class="pi" [ngClass]="{
+                        'pi-check': uploadState === 'success',
+                        'pi-spinner pi-spin': uploadState === 'loading',
+                        'pi-times': uploadState === 'error',
+                        '': uploadState === 'idle'
+                    }" style="font-size: 1.5rem; margin-right: 0.5rem;"></span>
+                    <p-button label="Upload" (onClick)="fu.upload()" [disabled]="uploadState === 'loading'" />
+                </div>
+            </div>
+    </p-card>
+</div>

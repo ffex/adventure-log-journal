@@ -1,0 +1,21 @@
+<div class="flex justify-content-center align-items-center h-full mt-5">
+    <p-card header="Create New Character">
+        <form [formGroup]="characterForm" (ngSubmit)="onSubmit()">
+            <p-floatlabel variant="on" class="mb-3">
+                <input pInputText id="name" formControlName="name" autocomplete="off" />
+                <label for="name">Name</label>
+            </p-floatlabel>
+            <p-floatlabel variant="on" class="mb-3">
+                <input pInputText id="race" formControlName="race" autocomplete="off" />
+                <label for="race">Race</label>
+            </p-floatlabel>
+            <p-floatlabel variant="on" class="mb-3">
+                <input pInputText id="characterClass" formControlName="characterClass" autocomplete="off" />
+                <label for="characterClass">Class</label>
+            </p-floatlabel>
+            <div class="flex justify-content-end">
+                <p-button label="Submit" type="submit" />
+            </div>
+        </form>
+    </p-card>
+</div>

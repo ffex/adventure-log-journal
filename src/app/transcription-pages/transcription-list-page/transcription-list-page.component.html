@@ -1,0 +1,29 @@
+<div class="flex justify-content-end mt-3">
+    <p-button icon="pi pi-plus" severity="info" [rounded]="true" [text]="true" (click)="onAdd()"></p-button>
+</div>
+<p-table [value]="transcripts" 
+selectionMode="single" 
+[(selection)]="selectedTranscript" 
+[tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Name</th>
+            <th>Upload Date</th>
+            <th>Data End Transcription</th>
+            <th>isProcessing</th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-transcript >
+        <tr [pSelectableRow]="transcript">
+            <td>{{ transcript.name }}</td>
+            <td>{{ transcript.dateUpload }}</td>
+            <td>{{ transcript.dateEndTranscription }}</td>
+            <td>{{ transcript.isProcessing }}</td>
+            <td>
+                <p-button icon="pi pi-trash" severity="danger" [rounded]="true" [text]="true" (click)="onDelete(transcript)"></p-button>
+                <p-button icon="pi pi-eye" severity="info" [rounded]="true" [text]="true" (click)="onView(transcript.$id)"></p-button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

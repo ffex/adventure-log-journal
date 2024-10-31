@@ -24,9 +24,9 @@ export class MenubarComponent {
         routerLink: '/'
       },
       {
-        label: 'Upload',
-        icon: 'pi pi-fw pi-upload',
-        routerLink: '/upload'
+        label: 'Adventure',
+        icon: 'pi pi-fw pi-crown',
+        routerLink: '/adventure-list'
       },
       {
         label: 'About',

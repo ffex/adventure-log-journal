@@ -1,0 +1,16 @@
+<div class="flex justify-content-center align-items-center h-full mt-5">
+
+    <p-card header="Upload Audio file">
+        <form [formGroup]="transcriptForm">
+            <p-floatlabel variant="on" class="mb-3">
+                <input pInputText id="name" formControlName="name" autocomplete="off" />
+                <label for="name">Name</label>
+            </p-floatlabel>
+        </form>
+        <p-fileupload #fu mode="basic" chooseLabel="Choose" chooseIcon="pi pi-upload" accept="audio/*"
+            maxFileSize="10000000" customUpload="true" (uploadHandler)="onUpload($event)" />
+        <div class="flex justify-content-end">
+            <p-button label="Upload" type="button" (onClick)="fu.upload()" severity="secondary" />
+        </div>
+    </p-card>
+</div>
