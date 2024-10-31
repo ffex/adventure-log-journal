@@ -32,10 +32,9 @@ def main(context):
         transcriber = aai.Transcriber()
 
         config = aai.TranscriptionConfig(speaker_labels=True)
-        #TODO implement language (NO HACKtoberfest2024)
+        #TODO implement language italian
 
         transcript = transcriber.submit(fileUrl, config=config)
-        #TODO: verifica se c'è una sorta di timeout oppure no
 
         db = Databases(client)
 

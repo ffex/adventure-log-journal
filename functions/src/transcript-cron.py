@@ -34,12 +34,17 @@ def main(context):
                 context.log(response.json())
                 transcript = response.json();
                 transcript_text = ""
+                speakerCharacters = []
                 for utterance in transcript['utterances']:
                     transcript_text += f"Speaker {utterance['speaker']}: {utterance['text']}\n"
+
+                    speaker = {"speaker":f"Speaker {utterance['speaker']}","character":""}
+                    speakerCharacters.append(speaker)
                 if transcript is not None:
                     db.update_document(DB_ID, COLLECTION_ID, document['$id'], {"rawText": transcript_text,
                                                                                "isProcessing": False,
-                                                                               "dateUpload": datetime.now().isoformat()})
+                                                                               "dateUpload": datetime.now().isoformat(),
+                                                                               "speakerCharacters": speakerCharacters})
                     cnt_transcripts_processed += 1
             else:
                 context.log(f"Error getting transcript {document['assemblyAiTranscriptId']}")
