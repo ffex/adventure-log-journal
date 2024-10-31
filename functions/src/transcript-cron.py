@@ -32,9 +32,10 @@ def main(context):
 
             response = requests.get(f"https://api.assemblyai.com/v2/transcript/{document['assemblyAiTranscriptId']}",
                                     headers={"Authorization": AAI_API_KEY})
-            if response.status == 'completed':
-                context.log(response.json())
-                transcript = response.json();
+            
+            context.log(response.json())
+            transcript = response.json();
+            if transcript['status'] == 'completed':
                 transcript_text = ""
                 speakerCharacters = []
                 for utterance in transcript['utterances']:
