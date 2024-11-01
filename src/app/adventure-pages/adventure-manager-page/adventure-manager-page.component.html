@@ -1,8 +1,9 @@
-<p-tabs value="0">
+<p-tabs value="0" class="mt-5">
     <p-tablist>
         <p-tab value="0">Detail</p-tab>
         <p-tab value="1">Characters</p-tab>
         <p-tab value="2">Transcriptions</p-tab>
+        <p-tab value="3">Journal</p-tab>
     </p-tablist>
     <p-tabpanels>
         <p-tabpanel value="0">
@@ -21,12 +22,18 @@
                 <app-transcription-upload-page [adventureId]="adventureId!" (saveClicked)="onTranscriptionSave()"></app-transcription-upload-page>
             </div>
             <div *ngIf="showTranscriptionPanel == 'list'">
-                <app-transcription-list-page [adventureId]="adventureId!" (createClicked)="onTranscriptionCreate()" (viewClicked)="onTranscriptionView($event)"></app-transcription-list-page>
+                <app-transcription-list-page [adventureId]="adventureId!" (createClicked)="onTranscriptionCreate()" (viewClicked)="onTranscriptionView($event)" (assignSpeakerClicked)="onAssignSpeaker($event)"></app-transcription-list-page>
             </div>
             <div *ngIf="showTranscriptionPanel == 'detail'">
                 <app-transcription-detail-page [adventureId]="adventureId!" [transcriptId]="currentTranscriptId!" (saveClicked)="onTranscriptionSave()"></app-transcription-detail-page>
             </div>
-
+            <div *ngIf="showTranscriptionPanel == 'assign'">
+                <app-transcription-assign-speaker-page [adventureId]="adventureId!" [transcriptId]="currentTranscriptId!" (saveClicked)="onTranscriptionSave()"></app-transcription-assign-speaker-page>
+            </div>
+        </p-tabpanel>
+        <p-tabpanel value="3">
+            <app-adventure-journal-page [adventureId]="adventureId!"></app-adventure-journal-page>
         </p-tabpanel>
     </p-tabpanels>
 </p-tabs>
+<img src="intero.png" alt="Logo" class="logo" style="display: block; margin: 0 auto; width: 30%;">

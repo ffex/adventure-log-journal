@@ -3,11 +3,14 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { Transcript } from '../../data/transcript.model';
 import { AppwriteService } from '../../services/appwrite.service';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-transcription-list-page',
   standalone: true,
-  imports: [TableModule, ButtonModule],
+  imports: [TableModule, ButtonModule, ToastModule],
+  providers: [MessageService],
   templateUrl: './transcription-list-page.component.html',
   styleUrl: './transcription-list-page.component.css'
 })
@@ -17,8 +20,9 @@ export class TranscriptionListPageComponent {
   selectedTranscript: Transcript | null = null;
   @Output() createClicked = new EventEmitter<void>(); 
   @Output() viewClicked = new EventEmitter<string>();
+  @Output() assignSpeakerClicked = new EventEmitter<string>();
 
-  constructor(private appwriteService: AppwriteService) {
+  constructor(private appwriteService: AppwriteService, private messageService: MessageService) {
 
   }
 
@@ -45,5 +49,14 @@ export class TranscriptionListPageComponent {
 
   onDelete(transcript: Transcript) {
     console.log(transcript);
+  }
+
+  onAssignSpeaker(transcriptId: string) {
+    this.assignSpeakerClicked.emit(transcriptId);
+  }
+
+  onGenerateJournal(transcriptId: string) {
+    console.log("generate journal", transcriptId);
+    this.messageService.add({ severity: 'success', summary: 'Journal Generated', detail: 'Check your journal', key: 'bc', life: 3000 });
   }
 }

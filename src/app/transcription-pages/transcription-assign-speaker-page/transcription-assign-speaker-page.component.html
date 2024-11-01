@@ -1,0 +1,13 @@
+<div class="flex justify-content-center align-items-center h-full mt-5">
+    <p-card header="Assign Character to Speakers">
+        <div *ngFor="let speaker of speakers" class="mb-3">
+            
+            <p-select [options]="characters" [(ngModel)]="speaker.character" optionLabel="name" optionValue="code"
+                [placeholder]="speaker.speaker" class="w-full md:w-56" />
+
+        </div>
+        <div class="flex justify-content-end mt-4">
+            <p-button label="Submit" (onClick)="onSubmit()" />
+        </div>
+    </p-card>
+</div>

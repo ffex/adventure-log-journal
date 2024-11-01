@@ -1,50 +1,15 @@
-# ⚡ Python Starter Function
+# ⚡ Python Function
 
-TODO: README
+Three simple backend functions to help with the adventure journal app.
 
-A simple starter function. Edit `src/main.py` to get started and create something awesome! 🚀
+## Create New Transcription
 
-## 🧰 Usage
+Function to create a new transcription and make the request to AssemblyAI to start the transcription process.
 
-### GET /ping
+## Transcript Cron
 
-- Returns a "Pong" message.
+Scheduled function to check AssemblyAI for completed transcriptions and update the database.
 
-**Response**
+## Generate Journal
 
-Sample `200` Response:
-
-```text
-Pong
-```
-
-### GET, POST, PUT, PATCH, DELETE /
-
-- Returns a "Learn More" JSON response.
-
-**Response**
-
-Sample `200` Response:
-
-```json
-{
-  "motto": "Build like a team of hundreds_",
-  "learn": "https://appwrite.io/docs",
-  "connect": "https://appwrite.io/discord",
-  "getInspired": "https://builtwith.appwrite.io"
-}
-```
-
-## ⚙️ Configuration
-
-| Setting           | Value                             |
-| ----------------- | --------------------------------- |
-| Runtime           | Python (3.9)                      |
-| Entrypoint        | `src/main.py`                     |
-| Build Commands    | `pip install -r requirements.txt` |
-| Permissions       | `any`                             |
-| Timeout (Seconds) | 15                                |
-
-## 🔒 Environment Variables
-
-No environment variables required.
+Function to generate a journal from a transcription text.

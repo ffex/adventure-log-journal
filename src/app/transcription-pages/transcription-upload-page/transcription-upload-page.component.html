@@ -8,9 +8,15 @@
             </p-floatlabel>
         </form>
         <p-fileupload #fu mode="basic" chooseLabel="Choose" chooseIcon="pi pi-upload" accept="audio/*"
-            maxFileSize="10000000" customUpload="true" (uploadHandler)="onUpload($event)" />
-        <div class="flex justify-content-end">
-            <p-button label="Upload" type="button" (onClick)="fu.upload()" severity="secondary" />
+            maxFileSize="100000000" customUpload="true" (uploadHandler)="onUpload($event)" />
+        <div class="flex align-items-center justify-content-end ">
+            <span class="pi" [ngClass]="{
+                'pi-check': uploadState === 'success',
+                'pi-spinner pi-spin': uploadState === 'loading',
+                'pi-times': uploadState === 'error',
+                '': uploadState === 'idle'
+            }" style="font-size: 1.5rem; margin-right: 0.5rem;"></span>
+            <p-button label="Upload" type="button" (onClick)="fu.upload()" />
         </div>
     </p-card>
 </div>

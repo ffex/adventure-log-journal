@@ -9,6 +9,7 @@ export class Transcript {
     isProcessing: boolean | null = null;
     assemblyAiTranscriptId: string | null = null;
     adventure: string | null = null;
+    speakerCharacter: any[] = [];
 
     constructor(formValues: any) {
         this.$id = formValues.$id;
@@ -21,7 +22,7 @@ export class Transcript {
         this.isProcessing = formValues.isProcessing;
         this.assemblyAiTranscriptId = formValues.assemblyAiTranscriptId;
         this.adventure = formValues.adventureId;
-
+        this.speakerCharacter = formValues.speakerCharacter;
     }
 }
 //TODO add DM, add here speakers.

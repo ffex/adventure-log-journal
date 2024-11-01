@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { DividerModule } from 'primeng/divider';
 import { TabsModule } from 'primeng/tabs';
@@ -11,12 +11,14 @@ import { TranscriptionUploadPageComponent } from '../../transcription-pages/tran
 import { NgIf } from '@angular/common';
 import { Transcript } from '../../data/transcript.model';
 import { TranscriptionDetailPageComponent } from '../../transcription-pages/transcription-detail-page/transcription-detail-page.component';
+import { TranscriptionAssignSpeakerPageComponent } from '../../transcription-pages/transcription-assign-speaker-page/transcription-assign-speaker-page.component';
+import { AdventureJournalPageComponent } from '../../adventure-journal-page/adventure-journal-page.component';
 
 @Component({
   selector: 'app-adventure-manager-page',
   standalone: true,
   imports: [PanelMenuModule, DividerModule, TabsModule, AdventureDetailPageComponent, CharacterDetailPageComponent, CharacterListPageComponent, NgIf, TranscriptionListPageComponent, TranscriptionUploadPageComponent,
-     TranscriptionDetailPageComponent],
+     TranscriptionDetailPageComponent, TranscriptionAssignSpeakerPageComponent, AdventureJournalPageComponent],
   templateUrl: './adventure-manager-page.component.html',
   styleUrl: './adventure-manager-page.component.css'
 })
@@ -27,6 +29,10 @@ export class AdventureManagerPageComponent {
   showTranscriptionPanel: string="list";
   currentCharacterId: string | null = null;
   currentTranscriptId: string | null = null;
+
+  @ViewChild(CharacterListPageComponent) characterListPage!: CharacterListPageComponent;
+  @ViewChild(TranscriptionListPageComponent) transcriptionListPage!: TranscriptionListPageComponent;
+
   constructor(private route: ActivatedRoute) {
     this.route.paramMap.subscribe(params => {
       this.adventureId = params.get('id');
@@ -36,6 +42,7 @@ export class AdventureManagerPageComponent {
   onCharacterCreate() {
     console.log('onCharacterCreate');
     this.showCharacterDetail = true;
+    this.characterListPage.loadCharacters(this.adventureId!);
   }
 
   onCharacterEdit(characterId: string) {
@@ -57,11 +64,18 @@ export class AdventureManagerPageComponent {
   onTranscriptionSave() {
     console.log("onTranscriptionSave");
     this.showTranscriptionPanel = "list";
+    //this.transcriptionListPage.loadTranscripts(this.adventureId!);
   }
 
   onTranscriptionView(transcriptId: string) {
     console.log("onTranscriptionView");
     this.showTranscriptionPanel = "detail";
+    this.currentTranscriptId = transcriptId;
+  }
+
+  onAssignSpeaker(transcriptId: string) {
+    console.log("onAssignSpeaker");
+    this.showTranscriptionPanel = "assign";
     this.currentTranscriptId = transcriptId;
   }
 }

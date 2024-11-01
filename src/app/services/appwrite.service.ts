@@ -4,6 +4,7 @@ import { environment } from "../../environments/environment";
 import { Adventure } from "../data/adventure.model";
 import { Character } from "../data/character.model";
 import { Transcript } from "../data/transcript.model";
+import { Speaker } from "../data/speaker.model";
 
 @Injectable({
     providedIn: 'root',
@@ -74,6 +75,7 @@ export class AppwriteService {
     }
 
     saveTranscript(fileID: string, name: string, adventure: string) {
+        console.log("Saving Transcript")
         const promise = this.functions.createExecution(
             environment.FUNCTION_CREATE_NEW_TRANSCRIPT_ID, 
             undefined,
@@ -85,6 +87,32 @@ export class AppwriteService {
 
     getTranscript(id: string) {
         const promise = this.db.getDocument(environment.ADVENTURE_DB_ID, environment.TRANSCRIPT_COLLECTION_ID, id);
+        return promise;
+    }
+
+    generateJournal(transcriptId: string) {
+        const promise = this.functions.createExecution(
+            environment.FUNCTION_GENERATE_JOURNAL_ID, 
+            undefined,
+            true,
+            '/' + transcriptId,
+            ExecutionMethod.POST);
+        return promise;
+    }
+
+
+    saveSpeaker(speakers: any[]) {
+        const speaker = {
+            speaker: speakers[0].speaker,
+            character: speakers[0].character
+        }
+        console.log(speaker);
+        const promise = this.db.createDocument(environment.ADVENTURE_DB_ID, environment.SPEAKER_COLLECTION_ID, ID.unique(), speaker);
+        return promise;
+    }
+
+    getJournalDays(adventureId: string) {
+        const promise = this.db.listDocuments(environment.ADVENTURE_DB_ID, environment.JOURNAL_DAY_COLLECTION_ID, [Query.equal('adventure', adventureId)]);
         return promise;
     }
 }

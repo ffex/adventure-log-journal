@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-about-page',
   standalone: true,
-  imports: [],
+  imports: [CardModule],
   templateUrl: './about-page.component.html',
   styleUrl: './about-page.component.css'
 })
