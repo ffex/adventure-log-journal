@@ -1,5 +1,4 @@
-# AdventureLog
-
+![logo](https://github.com/ffex/adventure-log-journal/blob/main/public/intero.png )
 Small app to help with journaling and transcription of audio for tabletop roleplaying games.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.9.
