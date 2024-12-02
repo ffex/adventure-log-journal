@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Adventure } from '../../data/adventure.model';
-import { AppwriteService } from '../../services/appwrite.service';
+import { Adventure } from '../../../data/adventure.model';
+import { AppwriteService } from '../../../services/appwrite.service';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { Router } from '@angular/router';

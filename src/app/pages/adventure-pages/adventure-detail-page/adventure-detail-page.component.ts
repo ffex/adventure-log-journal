@@ -4,8 +4,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
-import { AppwriteService } from '../../services/appwrite.service';
-import { Adventure } from '../../data/adventure.model';
+import { AppwriteService } from '../../../services/appwrite.service';
+import { Adventure } from '../../../data/adventure.model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CardModule } from 'primeng/card';
-import { JournalDay } from '../data/journal-day.model';
-import { AppwriteService } from '../services/appwrite.service';
+import { JournalDay } from '../../data/journal-day.model';
+import { AppwriteService } from '../../services/appwrite.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

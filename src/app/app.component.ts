@@ -3,7 +3,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MenubarComponent } from './menubar/menubar.component';
 import { PrimeNGConfig } from 'primeng/api';
 import { Aura } from 'primeng/themes/aura';
-import { HomePageComponent } from './home-page/home-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CommonModule } from '@angular/common';
 import { Nora } from 'primeng/themes/nora';
 

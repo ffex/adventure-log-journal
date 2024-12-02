@@ -4,9 +4,9 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
-import { Character } from '../../data/character.model';
-import { Transcript } from '../../data/transcript.model';
-import { AppwriteService } from '../../services/appwrite.service';
+import { Character } from '../../../data/character.model';
+import { Transcript } from '../../../data/transcript.model';
+import { AppwriteService } from '../../../services/appwrite.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

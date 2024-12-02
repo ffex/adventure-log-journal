@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
-import { Transcript } from '../../data/transcript.model';
-import { AppwriteService } from '../../services/appwrite.service';
+import { Transcript } from '../../../data/transcript.model';
+import { AppwriteService } from '../../../services/appwrite.service';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 

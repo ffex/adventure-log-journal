@@ -6,13 +6,13 @@ import { ActivatedRoute } from '@angular/router';
 import { AdventureDetailPageComponent } from '../adventure-detail-page/adventure-detail-page.component';
 import { CharacterDetailPageComponent } from '../../characters-pages/character-detail-page/character-detail-page.component';
 import { CharacterListPageComponent } from '../../characters-pages/character-list-page/character-list-page.component';
-import { TranscriptionListPageComponent } from '../../transcription-pages/transcription-list-page/transcription-list-page.component';
-import { TranscriptionUploadPageComponent } from '../../transcription-pages/transcription-upload-page/transcription-upload-page.component';
+import { TranscriptionListPageComponent } from '../../../pages/transcription-pages/transcription-list-page/transcription-list-page.component';
+import { TranscriptionUploadPageComponent } from '../../../pages/transcription-pages/transcription-upload-page/transcription-upload-page.component';
 import { NgIf } from '@angular/common';
-import { Transcript } from '../../data/transcript.model';
-import { TranscriptionDetailPageComponent } from '../../transcription-pages/transcription-detail-page/transcription-detail-page.component';
-import { TranscriptionAssignSpeakerPageComponent } from '../../transcription-pages/transcription-assign-speaker-page/transcription-assign-speaker-page.component';
-import { AdventureJournalPageComponent } from '../../adventure-journal-page/adventure-journal-page.component';
+import { Transcript } from '../../../data/transcript.model';
+import { TranscriptionDetailPageComponent } from '../../../pages/transcription-pages/transcription-detail-page/transcription-detail-page.component';
+import { TranscriptionAssignSpeakerPageComponent } from '../../../pages/transcription-pages/transcription-assign-speaker-page/transcription-assign-speaker-page.component';
+import { AdventureJournalPageComponent } from '../../../pages/adventure-journal-page/adventure-journal-page.component';
 
 @Component({
   selector: 'app-adventure-manager-page',

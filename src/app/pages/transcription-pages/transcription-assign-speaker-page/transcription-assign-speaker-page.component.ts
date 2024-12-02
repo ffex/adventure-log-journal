@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SelectModule } from 'primeng/select';
-import { AppwriteService } from '../../services/appwrite.service';
+import { AppwriteService } from '../../../services/appwrite.service';
 import { FormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
 import { CommonModule } from '@angular/common';
-import { Character } from '../../data/character.model';
-import { Transcript } from '../../data/transcript.model';
+import { Character } from '../../../data/character.model';
+import { Transcript } from '../../../data/transcript.model';
 import { ButtonModule } from 'primeng/button';
 
 @Component({

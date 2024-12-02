@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Transcript } from '../../data/transcript.model';
-import { AppwriteService } from '../../services/appwrite.service';
+import { Transcript } from '../../../data/transcript.model';
+import { AppwriteService } from '../../../services/appwrite.service';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';

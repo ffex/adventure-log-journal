@@ -1,6 +1,11 @@
 
 <div class="flex justify-content-center align-items-center h-full mt-5">
     <p-card header="Login">
+        @if (loginFailed) {
+            <div class="flex justify-content-center align-items-center">
+                <p>Login failed. Please try again.</p>
+            </div>
+        }
         <p-inputgroup class="mb-3">
             <p-inputgroup-addon>
                 <i class="pi pi-user"></i>

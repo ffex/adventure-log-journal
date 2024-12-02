@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Character } from '../../data/character.model';
-import { AppwriteService } from '../../services/appwrite.service';
+import { Character } from '../../../data/character.model';
+import { AppwriteService } from '../../../services/appwrite.service';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 
