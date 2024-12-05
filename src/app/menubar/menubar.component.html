@@ -1,7 +1,12 @@
 <p-menubar [model]="items">
     <ng-template pTemplate="end">
         <div class="flex items-center gap-2">
-            <p-avatar class="hand-cursor" icon="pi pi-user" shape="circle" (click)="navigateToLogin()" />
+            <p-menu #menu [model]="accountItems" [popup]="true" />
+            @if (isLoggedIn) {
+                <p-avatar class="hand-cursor" label="{{accountFirstChar}}" shape="circle" (click)="menu.toggle($event)" />
+            } @else {
+                <p-avatar class="hand-cursor" icon="pi pi-user" shape="circle" (click)="menu.toggle($event)" />
+            }
         </div>
     </ng-template>
 </p-menubar>

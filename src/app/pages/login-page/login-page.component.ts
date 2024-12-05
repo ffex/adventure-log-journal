@@ -5,23 +5,25 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { AppwriteService } from '../../services/appwrite.service';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
-
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [CardModule, InputGroupModule, InputGroupAddonModule, InputTextModule, ButtonModule, FormsModule],
+  imports: [ReactiveFormsModule, CardModule, InputGroupModule, InputGroupAddonModule, InputTextModule, ButtonModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
 export class LoginPageComponent {
-  username: string = '';
-  password: string = '';
+  loginForm: FormGroup;
   loginFailed: boolean = false;
-  constructor(private router: Router, private appwriteService: AppwriteService, private route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder, private router: Router, private appwriteService: AppwriteService, private route: ActivatedRoute) {
+    this.loginForm = this.fb.group({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
+    });
+  }
 
   ngOnInit() {
     const status = this.route.snapshot.queryParams['status'];
@@ -30,15 +32,25 @@ export class LoginPageComponent {
     }
   }
 
+  onSubmit() {
+    if (this.loginForm.valid) {
+      this.login();
+    }
+  }
+
   login() {
-    console.log('login');
-    this.appwriteService.loginAccount(this.username, this.password)
+    this.appwriteService.loginAccount(this.loginForm.value.email, this.loginForm.value.password)
       .then((response) => {
         this.router.navigate(['/']);
         console.log(response); // Success
       }, (error) => {
-        this.router.navigate(['/login', {queryParams: {status: 'failed'}}]);
+        this.router.navigate(['/login'], { queryParams: { status: 'failed' } });
         console.log(error); // Failure
       });
+  }
+
+  isFieldInvalid(fieldName: string): boolean {
+    return this.loginForm.get(fieldName)!.invalid &&
+      (this.loginForm.get(fieldName)!.dirty || this.loginForm.get(fieldName)!.touched);
   }
 }

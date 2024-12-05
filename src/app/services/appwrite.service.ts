@@ -3,8 +3,6 @@ import { Client, Account, ID, Databases, Query, Storage, Functions, ExecutionMet
 import { environment } from "../../environments/environment";
 import { Adventure } from "../data/adventure.model";
 import { Character } from "../data/character.model";
-import { Transcript } from "../data/transcript.model";
-import { Speaker } from "../data/speaker.model";
 
 @Injectable({
     providedIn: 'root',
@@ -15,6 +13,7 @@ export class AppwriteService {
     private db: Databases;
     private storage: Storage;
     private functions: Functions;
+    accountInfo: any;
 
     constructor() {
         this.client = new Client();
@@ -29,6 +28,23 @@ export class AppwriteService {
     loginAccount(email: string, password: string) {
         const promise = this.account.createEmailPasswordSession(email, password);
         return promise;
+    }
+    
+    logoutAccount() {
+        const promise = this.account.deleteSessions();
+        return promise;
+    }
+
+    isLoggedIn() {
+        const promise = this.account.get().then((accountInfo) => {
+            this.accountInfo = accountInfo;
+            return true
+        }).catch(() => false);
+        return promise;
+    }
+
+    getAccountInfo() {
+        return this.accountInfo ? this.accountInfo : null;
     }
 
     saveAdventure(adventure: Adventure) {

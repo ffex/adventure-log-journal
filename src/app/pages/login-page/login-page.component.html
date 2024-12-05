@@ -1,25 +1,38 @@
-
 <div class="flex justify-content-center align-items-center h-full mt-5">
-    <p-card header="Login">
+    <p-card header="Login" [style]="{ width: '25rem', overflow: 'hidden' }">
         @if (loginFailed) {
-            <div class="flex justify-content-center align-items-center">
-                <p>Login failed. Please try again.</p>
-            </div>
-        }
-        <p-inputgroup class="mb-3">
-            <p-inputgroup-addon>
-                <i class="pi pi-user"></i>
-            </p-inputgroup-addon>
-            <input pInputText placeholder="Username" [(ngModel)]="username" />
-        </p-inputgroup>
-        <p-inputgroup class="mb-3">
-            <p-inputgroup-addon>
-                <i class="pi pi-key"></i>
-            </p-inputgroup-addon>
-            <input pInputText type="password" placeholder="Password" [(ngModel)]="password" />
-        </p-inputgroup>
-        <div class="flex justify-content-end">
-            <p-button label="Login" (click)="login()" />
+        <div class="flex justify-content-center align-items-center">
+            <p [style]="{color: 'var(--p-red-500)'}">Login failed. Please try again.</p>
         </div>
+        }
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <p-inputgroup>
+                <p-inputgroup-addon>
+                    <i class="pi pi-user"></i>
+                </p-inputgroup-addon>
+                <input pInputText placeholder="Email" type="email" formControlName="email" />
+
+            </p-inputgroup>
+            @if (isFieldInvalid('email')) {
+            <div class="flex justify-content-center align-items-center">
+                <small [style]="{color: 'var(--p-red-500)'}">Email must be a valid email address.</small>
+            </div>
+            }
+            <p-inputgroup class="mt-3">
+                <p-inputgroup-addon>
+                    <i class="pi pi-key"></i>
+                </p-inputgroup-addon>
+                <input pInputText type="password" placeholder="Password" formControlName="password" />
+            </p-inputgroup>
+            @if (isFieldInvalid('password')) {
+            <div class="flex justify-content-center align-items-center">
+                <small [style]="{color: 'var(--p-red-500)'}">Password is required.</small>
+            </div>
+            }
+            <div class="flex justify-content-end mt-3">
+                <p-button label="Login" type="submit" />
+            </div>
+        </form>
+
     </p-card>
 </div>
